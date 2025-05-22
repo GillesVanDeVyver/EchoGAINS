@@ -1,26 +1,29 @@
 import SwiftUI
 
 struct EjectionFractionView: View {
-    @Binding var ejectionFraction: String
-    var calculateEFAction: () -> Void // Action to be performed when button is tapped
+    @Binding var ejectionFraction: String // This will now display AFC or status/error
+    var calculateEFAction: () -> Void
 
     var body: some View {
         VStack {
-            Text("Ejection Fraction (EF)")
+            Text("Area Fraction Change (AFC)") // Updated Label
                 .font(.headline)
             
             Text(ejectionFraction)
-                .font(.largeTitle)
+                .font(.title) // Slightly smaller if it can be long error messages
                 .padding(.vertical, 5)
-                .accessibilityLabel("Ejection fraction value")
+                .multilineTextAlignment(.center)
+                .lineLimit(2) // Allow for two lines for error messages
+                .minimumScaleFactor(0.75) // Allow text to shrink
+                .accessibilityLabel("Area Fraction Change value")
                 .accessibilityValue(ejectionFraction.isEmpty || ejectionFraction == "--%" ? "Not yet calculated" : ejectionFraction)
 
-            Button("Calculate EF") {
+            Button("Calculate AFC") { // Updated Button Text
                 calculateEFAction()
             }
             .padding()
             .buttonStyle(.borderedProminent)
-            .accessibilityHint("Tap to start the ejection fraction calculation process")
+            .accessibilityHint("Tap to start the Area Fraction Change calculation process using available segmented frames.")
         }
         .padding()
     }
@@ -28,15 +31,28 @@ struct EjectionFractionView: View {
 
 // Preview
 struct EjectionFractionView_Previews: PreviewProvider {
-    @State static var previewEF: String = "60%" // Example EF for preview
+    @State static var previewAFC_calculated: String = "AFC: 55.3%"
+    @State static var previewAFC_initial: String = "--%"
+    @State static var previewAFC_error: String = "Error: Low Masks"
     
     static var previews: some View {
-        EjectionFractionView(ejectionFraction: $previewEF, calculateEFAction: {
-            print("Preview Calculate EF button tapped")
-            // In a real scenario, this would trigger a dummy calculation or update for preview
-            // For now, just print a message or update the previewEF if needed.
-            previewEF = (previewEF == "60%") ? "62%" : "60%" // Toggle for visual feedback
-        })
+        Group {
+            EjectionFractionView(ejectionFraction: .constant(previewAFC_initial), calculateEFAction: {
+                print("Preview Calculate AFC button tapped (Initial)")
+            })
+            .previewDisplayName("Initial State")
+
+            EjectionFractionView(ejectionFraction: .constant(previewAFC_calculated), calculateEFAction: {
+                print("Preview Calculate AFC button tapped (Calculated)")
+            })
+            .previewDisplayName("AFC Calculated")
+            
+            EjectionFractionView(ejectionFraction: .constant(previewAFC_error), calculateEFAction: {
+                print("Preview Calculate AFC button tapped (Error)")
+            })
+            .previewDisplayName("AFC Error")
+        }
         .previewLayout(.sizeThatFits)
+        .padding()
     }
 }

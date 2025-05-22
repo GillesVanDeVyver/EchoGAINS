@@ -14,7 +14,7 @@ struct VideoPickerView: View {
             .padding()
             .fileImporter(
                 isPresented: $isPickerPresented,
-                allowedContentTypes: [UTType.movie], // Allow only movie types, .mp4 is a common one
+                allowedContentTypes: [UTType.mpeg4Movie], // Specifically allow MP4 movies
                 allowsMultipleSelection: false
             ) { result in
                 do {

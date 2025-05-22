@@ -1,0 +1,30 @@
+{
+    "all_results": {
+        "nnUNetTrainer__nnUNetPlans__2d": 0.9876604670612132
+    },
+    "best_model_or_ensemble": {
+        "postprocessing_file": "/home/gillesv/data/nnUNet_results/Dataset405_CAMUS_trainval_all/nnUNetTrainer__nnUNetPlans__2d/crossval_results_folds_0/postprocessing.pkl",
+        "result_on_crossval_post_pp": 0.9876604670612132,
+        "result_on_crossval_pre_pp": 0.9876604670612132,
+        "selected_model_or_models": [
+            {
+                "configuration": "2d",
+                "plans_identifier": "nnUNetPlans",
+                "trainer": "nnUNetTrainer"
+            }
+        ],
+        "some_plans_file": "/home/gillesv/data/nnUNet_results/Dataset405_CAMUS_trainval_all/nnUNetTrainer__nnUNetPlans__2d/crossval_results_folds_0/plans.json"
+    },
+    "considered_models": [
+        {
+            "configuration": "2d",
+            "plans": "nnUNetPlans",
+            "trainer": "nnUNetTrainer"
+        }
+    ],
+    "dataset_name_or_id": "Dataset405_CAMUS_trainval_all",
+    "ensembling_allowed": true,
+    "folds": [
+        0
+    ]
+}

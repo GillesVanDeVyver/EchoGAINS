@@ -1,0 +1,13 @@
+{
+    "channel_names": {
+        "0": "Grayscale"
+    },
+    "labels": {
+        "background": 0,
+        "LeftVentricle": 1,
+        "Myocardium": 2
+    },
+    "numTraining": 10800,
+    "file_ending": ".png",
+    "name": "Dataset405_CAMUS_trainval_all"
+}

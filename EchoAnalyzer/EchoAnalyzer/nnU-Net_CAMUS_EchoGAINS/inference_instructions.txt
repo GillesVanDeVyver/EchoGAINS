@@ -1,0 +1,7 @@
+***Run inference like this:***
+
+nnUNetv2_predict -d Dataset405_CAMUS_trainval_all -i INPUT_FOLDER -o OUTPUT_FOLDER -f  0 -tr nnUNetTrainer -c 2d -p nnUNetPlans
+
+***Once inference is completed, run postprocessing like this:***
+
+nnUNetv2_apply_postprocessing -i OUTPUT_FOLDER -o OUTPUT_FOLDER_PP -pp_pkl_file /home/gillesv/data/nnUNet_results/Dataset405_CAMUS_trainval_all/nnUNetTrainer__nnUNetPlans__2d/crossval_results_folds_0/postprocessing.pkl -np 8 -plans_json /home/gillesv/data/nnUNet_results/Dataset405_CAMUS_trainval_all/nnUNetTrainer__nnUNetPlans__2d/crossval_results_folds_0/plans.json
